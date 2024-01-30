@@ -25,14 +25,48 @@ void insertionSort(int arr[], int size)
 	}
 }
 
-void selectionSort(int arr[])
+void selectionSort(int arr[], int size)
 {
+    int i, j, min;
 
+    for(i = 0; i < size - 1; i++)
+    {
+        min = i;
+        for(j = i + 1; j < size; j++)
+        {
+        	if(arr[j] < arr[min])
+        		min = j;
+        }
+        if(arr[j] < arr[min])
+        	min = j;
+        if(min != i)
+        {
+        	int temp = arr[i];
+        	arr[i] = arr[min];
+        	arr[min] = temp;
+        }
+    }
 }
 
-void bubbleSort(int arr[])
+void bubbleSort(int arr[], int size)
 {
-
+	int i, j, swapped;
+	for(i = 0; i < size - 1; i++)
+	{
+		swapped = 0;
+	    for(j = 0; j < size - i - 1; j++)
+	    {
+	    	if (arr[j] > arr[j + 1])
+	    	{
+	    		int temp = arr[j];
+	    		arr[j] = arr[j + 1];
+				arr[j + 1] = temp;
+	            swapped = 1;
+	        }
+	    }
+	    if(swapped == 0)
+	    	break;
+	}
 }
 
 void printArr(int arr[], int size)
@@ -83,6 +117,48 @@ int main()
 	IS_end3 = (long)clock();
 	printArr(largeArr1, 10000);
 	printf("Execution time: %li microseconds\n\n", IS_end3 - IS_start3);
+
+	printf("SELECTION SORT:\n");
+
+	SS_start1 = (long)clock();
+	selectionSort(smallArr2, 10);
+	SS_end1 = (long)clock();
+	printArr(smallArr2, 10);
+	printf("Execution time: %li microseconds\n", SS_end1 - SS_start1);
+
+	SS_start2 = (long)clock();
+	selectionSort(medArr2, 500);
+	SS_end2 = (long)clock();
+	printArr(medArr2, 500);
+	printf("Execution time: %li microseconds\n", SS_end2 - SS_start2);
+
+	SS_start3 = (long)clock();
+	selectionSort(largeArr2, 10000);
+	SS_end3 = (long)clock();
+	printArr(largeArr2, 10000);
+	printf("Execution time: %li microseconds\n\n", SS_end3 - SS_start3);
+
+
+
+	printf("BUBBLE SORT:\n");
+
+	BS_start1 = (long)clock();
+	selectionSort(smallArr3, 10);
+	BS_end1 = (long)clock();
+	printArr(smallArr3, 10);
+	printf("Execution time: %li microseconds\n", BS_end1 - BS_start1);
+
+	BS_start2 = (long)clock();
+	selectionSort(medArr3, 500);
+	BS_end2 = (long)clock();
+	printArr(medArr3, 500);
+	printf("Execution time: %li microseconds\n", BS_end2 - BS_start2);
+
+	BS_start3 = (long)clock();
+	selectionSort(largeArr3, 10000);
+	BS_end3 = (long)clock();
+	printArr(largeArr3, 10000);
+	printf("Execution time: %li microseconds\n\n", BS_end3 - BS_start3);
 
 	return 0;
 }
