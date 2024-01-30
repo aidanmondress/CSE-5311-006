@@ -143,19 +143,19 @@ int main()
 	printf("BUBBLE SORT:\n");
 
 	BS_start1 = (long)clock();
-	selectionSort(smallArr3, 10);
+	bubbleSort(smallArr3, 10);
 	BS_end1 = (long)clock();
 	printArr(smallArr3, 10);
 	printf("Execution time: %li microseconds\n", BS_end1 - BS_start1);
 
 	BS_start2 = (long)clock();
-	selectionSort(medArr3, 500);
+	bubbleSort(medArr3, 500);
 	BS_end2 = (long)clock();
 	printArr(medArr3, 500);
 	printf("Execution time: %li microseconds\n", BS_end2 - BS_start2);
 
 	BS_start3 = (long)clock();
-	selectionSort(largeArr3, 10000);
+	bubbleSort(largeArr3, 10000);
 	BS_end3 = (long)clock();
 	printArr(largeArr3, 10000);
 	printf("Execution time: %li microseconds\n\n", BS_end3 - BS_start3);
